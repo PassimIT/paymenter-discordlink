@@ -28,7 +28,7 @@ class DiscordLink extends Command
      */
     public function handle()
     {
-        if (!config('services.discord.client_id'))
+        if (!config('settings.oauth_discord.client_id'))
             return $this->error('You need to provide a discord client id in the paymenter panel');
 
         $botToken = $this->ask('What is the bot token?');
@@ -39,7 +39,7 @@ class DiscordLink extends Command
 
         $activeProducts = $this->ask('What should the name of the active products be?', 'Active Products');
 
-        $url = 'https://discord.com/api/v10/applications/' . config('services.discord.client_id') . '/role-connections/metadata';
+        $url = 'https://discord.com/api/v10/applications/' . config('settings.oauth_discord.client_id') . '/role-connections/metadata';
 
         $response = Http::withHeaders([
             'Authorization' => 'Bot ' . $botToken,
