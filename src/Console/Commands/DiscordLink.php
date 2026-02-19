@@ -28,7 +28,7 @@ class DiscordLink extends Command
      */
     public function handle()
     {
-        if (!config('services.discord.client_id'))
+        if (!config('settings.oauth_discord.client_id'))
             return $this->error('You need to provide a discord client id in the paymenter panel');
 
         $botToken = $this->ask('What is the bot token?');
